@@ -32,7 +32,9 @@ FILTER_DLL filter = {
 	NULL, // func_exit
 	NULL, NULL, NULL, NULL, NULL, 0,
 	filter_information,
-	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	func_is_saveframe,
+	NULL, NULL, NULL, NULL,
 	0, 0 // reserve
 };
 
@@ -46,5 +48,12 @@ GetFilterTable(void)
 BOOL
 func_proc(FILTER *fp, FILTER_PROC_INFO *fpip)
 {
+	
 	return TRUE;
+}
+
+BOOL
+func_is_saveframe(FILTER *fp, void *editp, int saveno, int frame, int fps, int edit_flag, int inter)
+{
+	return ( saveno%2 == 0 );
 }

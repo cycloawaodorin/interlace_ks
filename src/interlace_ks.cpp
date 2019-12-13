@@ -48,6 +48,11 @@ GetFilterTable(void)
 BOOL
 func_proc(FILTER *fp, FILTER_PROC_INFO *fpip)
 {
+	if ( (!(fpip->flag&FILTER_PROC_INFO_FLAG_INVERT_FIELD_ORDER))^(!(fpip->flag&FILTER_PROC_INFO_FLAG_INVERT_INTERLACE)) ) {
+		// TFF
+	} else {
+		// BFF
+	}
 	
 	return TRUE;
 }
